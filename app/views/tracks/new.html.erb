@@ -1,0 +1,5 @@
+<form action="<%= album_tracks_url(@album) %>" method="post">
+	<%= render :partial => 'inputs' %>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="submit" value="Create Track">
+</form>

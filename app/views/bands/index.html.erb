@@ -1,0 +1,17 @@
+<h2>Boy Bands</h2>
+
+<ul>
+	<% @bands.each do |band| %>
+	<li><%= link_to "#{band.name}", band_url(band) %></li>
+	<%= button_to 'Edit band', edit_band_url(band), :method => "get" %>
+		<% if current_user.admin %>
+		<form action="<%= band_url(band) %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Kill band">
+		</form>
+		<% end %>
+	<% end %>
+</ul>
+
+<%= button_to 'Create new band', new_band_url, :method => "get" %>

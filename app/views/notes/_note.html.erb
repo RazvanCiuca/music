@@ -1,0 +1,24 @@
+<ul>
+	<% @notes.each do |note|%>
+	<li>
+		<!-- output note.author.email here later -->
+		<%= note.body %> <br />
+		<form action="<%= note_url(note) %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Erase note">
+		</form> <br />
+	</li>
+
+	<% end %>
+</ul>
+
+<form action="<%= notes_url %>" method='post'>
+	<label for="note_body">Type your shitty opinion here: </label><br />
+	<textarea name="note[body]" id="note_body"></textarea><br />
+	<input type="hidden" name="note[author_id]" value="<%= current_user.id %>">
+	<input type="hidden" name="note[track_id]" value="<%= @track.id %>">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="submit" value="Noone cares">
+
+</form>

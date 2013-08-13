@@ -1,0 +1,21 @@
+<h2>Albums</h2>
+
+<ul>
+	<% @albums.each do |album| %>
+		<li>
+			<b><%= link_to "#{album.name}", album_tracks_url(album)%></b> by <%= link_to "#{album.band.name}", band_url(album.band) %>
+			<br><%= album.recording %> recording
+		</li>
+
+		<%= button_to 'Edit album', edit_album_url(album), :method => "get" %>
+		<% if current_user.admin %>
+			<form action="<%= album_url(album) %>" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="submit" value="Delete Album">
+			</form> <br />
+		<% end %>
+	<% end %>
+</ul>
+
+<%= button_to 'Create new album', new_album_url, :method => "get" %>

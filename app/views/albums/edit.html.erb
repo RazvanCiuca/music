@@ -1,0 +1,7 @@
+<form action="<%= album_url(@album) %>" method="post">
+	<%= render :partial => 'inputs' %>
+	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+	<input type="submit" value="Update Album">
+</form>
+

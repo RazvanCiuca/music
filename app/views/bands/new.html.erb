@@ -1,0 +1,5 @@
+<form action="<%= bands_url %>" method="post">
+	<%= render :partial => 'inputs'%>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="submit" value="Create Band">
+</form>
